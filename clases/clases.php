@@ -122,10 +122,10 @@ class gestCines extends claseArchivo {
             for ($col = 0; $col < 20; $col++) {// de 0 a 20 porque son las columnas que queremos..
                 if ($this->butacas[$cont] == 0) {// si la butaca esta vacia.....
                     echo("<td style='color:green'>");
-                    echo("<form method='POST' name='but' action='' onmouseover='mostrarButaca(this)' onmouseout='ocultar()' style='margin:0'>");
+                    echo("<form method='POST' id='$cont' name='but' action='' onmouseover='mostrarButaca(this)' onmouseout='ocultar()' style='margin:0'>");
                     echo(" <input type='hidden' name='datosb' value='f" . ($f + 1) . " - b" . ($col + 1) . "'/>");
                     echo(" <input type='hidden' name='buta' value='" . $cont . "'/>");
-                    echo( "<input type='submit' value='' style='background-image: url(\"./imagenes/libre.png\"); width: 30px; height: 31px;'/>");
+                    echo( "<input type='button' value='' style='background-image: url(\"./imagenes/libre.png\"); width: 30px; height: 31px;'/>");
                     echo("</form>");
                 };
                 if ($this->butacas[$cont] == 1) {// si la butaca esta ocupada....
