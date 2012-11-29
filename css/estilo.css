@@ -1,0 +1,121 @@
+/* 
+    Document   : estilo
+    Created on : 19-nov-2012, 8:40:04
+    Author     : manuel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+*{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+body{
+    width: 99%;
+    overflow: hidden;
+}
+#numsalas{
+    position: absolute;
+    top:20px;
+    left: 20px;
+}
+#contenedor h1,h2{
+    text-align: center;
+}
+#selec{
+    text-align: center;
+}
+#dat{
+    font-size: 2em;
+}
+#dat2{
+    font-size: 1em;
+    width: 158px;
+    height: 60px;
+    opacity: 0.6;
+}
+#contenedor{
+    width: 99%;
+    overflow: hidden;
+}
+
+#formulario{
+    width: 400px;
+    height: 170px;
+    margin: 2% auto;
+    border: 4px;
+    border-color: #ccc;
+    border-style: solid;
+    overflow: hidden;
+    
+    /*** gradiente ***/
+    background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #1e5799 3%, #2edbf2 25%, #207cca 66%, #7db9e8 93%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(3%,#1e5799), color-stop(25%,#2edbf2), color-stop(66%,#207cca), color-stop(93%,#7db9e8)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* IE10+ */
+background: linear-gradient(135deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+-webkit-border-radius: 21px;
+-moz-border-radius: 21px;
+border-radius: 21px;
+}
+
+#formulario2{
+    width: 400px;
+    height: 300px;
+    margin: 5% auto 0;
+    border: 4px;
+    border-color: #ccc;
+    border-style: solid;
+    overflow: hidden;
+    
+    /*** gradiente ***/
+    background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #1e5799 3%, #2edbf2 25%, #207cca 66%, #7db9e8 93%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(3%,#1e5799), color-stop(25%,#2edbf2), color-stop(66%,#207cca), color-stop(93%,#7db9e8)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* IE10+ */
+background: linear-gradient(135deg,  #1e5799 3%,#2edbf2 25%,#207cca 66%,#7db9e8 93%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+-webkit-border-radius: 21px;
+-moz-border-radius: 21px;
+border-radius: 21px;
+}
+
+#formu,#formu2{
+ background: linear-gradient(135deg, #F7F731 3%, #FFFAA8 28%, #F9EB27 58%, #FCF3B0 82%) repeat scroll 0 0 transparent;
+    border: 4px double red;
+    height: 71%;
+    margin: 5% auto;
+    padding: 5%;
+    width: 90%;
+    
+background: #f7f731; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #f7f731 3%, #fffaa8 28%, #f9eb27 58%, #fcf3b0 82%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(3%,#f7f731), color-stop(28%,#fffaa8), color-stop(58%,#f9eb27), color-stop(82%,#fcf3b0)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #f7f731 3%,#fffaa8 28%,#f9eb27 58%,#fcf3b0 82%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #f7f731 3%,#fffaa8 28%,#f9eb27 58%,#fcf3b0 82%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #f7f731 3%,#fffaa8 28%,#f9eb27 58%,#fcf3b0 82%); /* IE10+ */
+background: linear-gradient(135deg,  #f7f731 3%,#fffaa8 28%,#f9eb27 58%,#fcf3b0 82%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f731', endColorstr='#fcf3b0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+#butacas{
+    width: 200px;
+    margin:0 auto;
+   
+}
+input .red{
+  background-image: url("./ocupado.png");
+}
