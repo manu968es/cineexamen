@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-11-2012 a las 16:24:32
+-- Tiempo de generación: 29-11-2012 a las 20:10:30
 -- Versión del servidor: 5.5.24
 -- Versión de PHP: 5.3.10-1ubuntu3.4
 
@@ -17,10 +17,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `gestcines3`
+-- Base de datos: `gestcines2`
 --
-CREATE DATABASE `gestcines3` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `gestcines3`;
+CREATE DATABASE `gestcines2` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `gestcines2`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `salas`
+--
+
+CREATE TABLE IF NOT EXISTS `salas` (
+  `id` int(11) NOT NULL,
+  `pelicula` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `salas`
+--
+
+INSERT INTO `salas` (`id`, `pelicula`) VALUES
+(1, 'Terminator'),
+(2, 'Lo que el viento se llevo'),
+(3, 'Start Wars 23');
 
 -- --------------------------------------------------------
 
@@ -48,10 +69,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usuario`, `pass`, `estado`, `puntos`, `regentrada`, `regpalomitas`, `premios`, `dni`, `fecha`, `anopremio`, `salas`) VALUES
-('lito', '827ccb0eea8a706c4c34a16891f84e7b', 'A', 10, 0, 0, 0, '23234345l', '1982-11-25', 0, 5),
-('lorena', '827ccb0eea8a706c4c34a16891f84e7b', 'A', 80, 0, 0, 15, '212314234', '1992-11-11', 2012, 5),
-('manuel', '827ccb0eea8a706c4c34a16891f84e7b', 'A', 30, 0, 0, 100, '20678987m', '1967-11-01', 2012, 5),
-('pepe', '827ccb0eea8a706c4c34a16891f84e7b', 'A', 0, 1, 1, 14, '12234345m', '1967-11-02', 2012, 5);
+('lito', '827ccb0eea8a706c4c34a16891f84e7b', 'A', 10, 0, 0, 0, '23234345l', '1982-11-25', 0, 3),
+('lorena', '827ccb0eea8a706c4c34a16891f84e7b', 'A', 80, 0, 0, 15, '212314234', '1992-11-11', 2012, 3),
+('manuel', '827ccb0eea8a706c4c34a16891f84e7b', 'A', 0, 0, 0, 32, '20678987m', '1967-11-01', 2012, 3);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

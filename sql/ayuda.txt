@@ -1,5 +1,0 @@
-1.- importar el archivo sql al phpmyadmin
-2.- dar permisos
-3.- en el codigo poner nuestro usuario y contraseña al crear
-    el objeto PDO
-4.- actualmente el usuario admin es manuel y el pass es 12345

@@ -12,7 +12,7 @@ if (!isset($_SESSION['nombre'])) {
 }
 // si se ha seleccionado una sala se crea la variable de sesion sala para crear el objeto archivo...
 if (isset($_POST['sala'])) {
-    $_SESSION['sala'] = "sala" . $_POST['sala'] . ".txt";
+    $_SESSION['sala']="sala".$_POST['sala'].".txt";
 }
 
 /* * ******************************************************************************IMPORTANTE PARA EXAMEN** */
@@ -28,43 +28,31 @@ if (!is_file($_SESSION['sala'])) {
     $archivo->iniciarSala();
 }
 $archivo->butacas = $archivo->arrayLineas();
-//if (!isset($_SESSION['reservas'])){
-  //      for ($h=0;$h<count($archivo->butacas);$h++){
-            
-    //    }
-    //}
+
 /* * ********si se ha pulsado el boton de compra realizamos la compra...****************** */
 
 
 if (isset($_POST['genera'])) {
-    $pp = $pru->getSalas();
-    for ($w = $pp; $w > 0; $w--) {
-        $_SESSION['sala'] = "sala" . $w . ".txt";
-        $archivo = new gestCines($_SESSION['sala']);
-        $archivo->iniciarSala();
+    $pp=$pru->getSalas();
+    for ($w=$pp;$w>0;$w--){
+    $_SESSION['sala'] = "sala".$w.".txt";
+    $archivo = new gestCines($_SESSION['sala']);
+    $archivo->iniciarSala();
     }
 }
 
-if (isset($_POST['nsalas'])) {
-    $cantidad = trim($_POST['nsalas']);
-    if ($cantidad != "") {
-        $pru->setSalas($_POST['nsalas']);
-        $_SESSION['sala'] = "sala1.txt";
-    }
+if (isset($_POST['nsalas'])){
+    $pru->setSalas($_POST['nsalas']);
 }
 
 //*******validar la compra *************//
 
 if (isset($_POST['buta'])) {
-    //$archivo->butacas = $archivo->arrayLineas();
+    $archivo->butacas = $archivo->arrayLineas();
     if ($archivo->butacas[$_POST['buta']] == 0) {// si la posicion del array es igual a cero...
-        $archivo->butacas[$_POST['buta']] = 2; //ponemos a dos la posicion del array...
-        $_SESSION['reservas']=true;// para saber que hay alguna butaca reservada
-        /*
+        $archivo->butacas[$_POST['buta']] = 1; //ponemos a uno la posicion del array...
         $archivo->compra(); // ejecutamos la funcion compra que realiza la compra...
         $pru->compra(); // efectuamos las operaciones de compra....
-         * 
-         */
     } else {
         unset($_POST['buta']);
         echo("<script>alert('Butaca no disponible');</script>");
@@ -81,29 +69,23 @@ if (isset($_POST['buta'])) {
         <title></title>
         <script type="text/javascript" src="./js/funciones.js"></script>
         <LINK REL=StyleSheet HREF="./css/estilo.css" TYPE="text/css" MEDIA=screen>
-        <script>
-        function cambiar($f){
-            var objeto= document.getElementById('$f');
-        objeto.style.backgroundImage= "url('./imagenes/reservado.png');";
-        }
-        </script>
     </head>
     <body>
         <div id="contenedor">
             <div id="admin" style="text-align: center">
                 <?php
-                if ($_SESSION['nombre'] == "manuel") {
-                    echo("<form id='gsalas' method='POST' action='compra.php'>
+            if ($_SESSION['nombre'] == "manuel") {
+                echo("<form id='gsalas' method='POST' action='compra.php'>
                 <input type='hidden' name='genera' />
                 <input type='submit' value='INICIAR SALAS' />
-            </form>");
-                }
-                ?>
+            </form>"); 
+            }
+            ?>
             </div>
             <div id="salan">
                 <?php
-                if ($_SESSION['nombre'] == "manuel") {
-                    echo("<form id='numsalas' method='POST' action='compra.php'>
+                if ($_SESSION['nombre']=="manuel"){
+                        echo("<form id='numsalas' method='POST' action='compra.php'>
                 Numero de salas:<input type='txt' name='nsalas' /><br>
                 <input type='submit' value='CREAR SALAS' />
             </form>");
@@ -111,34 +93,34 @@ if (isset($_POST['buta'])) {
                 ?>
             </div>
             <h1> GESTION DE SALAS </h1>
-
+            
             <!--/********** AQUI CREARE ESTE FORMULARIO CON PHP Y CON LA VARIABLE FECHA ACTUAL ***********/-->
             <div id="selec">
-
-                <form id="salas" name="salas" method="POST" action="">
-                    <select name="sala" onchange="salas.submit()">
-                        <?php
-                        $nums = $pru->getSalas();
-                        echo("<option value='0'>Seleccione una sala</option>");
-                        for ($s = 1; $s <= $nums; $s++) {
-                            $peli = $pru->getPeli($s);
-                            echo("<option value='" . $s . "'>" . $peli. "</option>");
-                        }
-                        ?>
+                
+            <form id="salas" name="salas" method="POST" action="">
+                <select name="sala" onchange="salas.submit()">
+                    <?php
+                    $nums=$pru->getSalas();
+                      echo("<option value='0'>Seleccione una sala</option>");
+                    for ($s=1;$s<=$nums;$s++){
+                        $peli=$pru->getPeli($s);
+                    echo("<option value='".$s."'>".$peli."</option>");
+                    }
+                    ?>
                     </select>
-                </form>
+            </form>
             </div>
             <h2> DISPONIBILIDAD DE LA SALA <?PHP
-                        if (isset($_SESSION['sala'])) {
-                            $sak = substr($_SESSION['sala'], 5, 1);
-                            if ($sak == ".") {
-                                $sak = substr($_SESSION['sala'], 4, 1);
-                            } else {
-                                $sak = substr($_SESSION['sala'], 4, 2);
-                            }
-                        }
-                        echo($sak);
-                        ?></h2>
+            if (isset($_SESSION['sala'])){
+                $sak=substr($_SESSION['sala'], 5,1);
+                if ($sak=="."){
+                $sak=substr($_SESSION['sala'], 4,1);
+                }else{
+                     $sak=substr($_SESSION['sala'], 4,2);
+                }
+            }
+            echo($sak);
+            ?></h2>
             <div id="butacas" style="width: 710px; margin: 0 auto;">
                 <?php
                 $archivo->mostrarSala();

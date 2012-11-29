@@ -122,22 +122,17 @@ class gestCines extends claseArchivo {
             for ($col = 0; $col < 20; $col++) {// de 0 a 20 porque son las columnas que queremos..
                 if ($this->butacas[$cont] == 0) {// si la butaca esta vacia.....
                     echo("<td style='color:green'>");
-                    echo("<form method='POST' name='but' action=''  style='margin:0'>");
+                    echo("<form method='POST' name='but' action='' onmouseover='mostrarButaca(this)' onmouseout='ocultar()' style='margin:0'>");
+                    echo(" <input type='hidden' name='datosb' value='f" . ($f + 1) . " - b" . ($col + 1) . "'/>");
                     echo(" <input type='hidden' name='buta' value='" . $cont . "'/>");
-                    echo( "<input type='button'id='".$cont."' value='' style='background-image: url(\"./imagenes/libre.png\"); width: 30px; height: 31px;' onclick='cambiar('".$cont."')'/>");
+                    echo( "<input type='submit' value='' style='background-image: url(\"./imagenes/libre.png\"); width: 30px; height: 31px;'/>");
                     echo("</form>");
                 };
                 if ($this->butacas[$cont] == 1) {// si la butaca esta ocupada....
                     echo("<td style='color:red'>");
-                    echo("<form method='POST' name='but' action=''  style='margin:0'>");
-                    echo( "<input type='button' name='" . $cont . "' style='background-image: url(\"./imagenes/ocupado.png\"); width: 30px; height: 31px;'/>");
-                    echo("</form>");
-                };
-                 if ($this->butacas[$cont] == 2) {// si la butaca esta ocupada....
-                    echo("<td style='color:red'>");
                     echo("<form method='POST' name='but' action='' onmouseover='mostrarButaca(this)' onmouseout='ocultar()' style='margin:0'>");
                     echo(" <input type='hidden' name='datosb' value='f" . ($f + 1) . " - b" . ($col + 1) . "'/>");
-                    echo( "<input type='button' name='" . $cont . "' style='background-image: url(\"./imagenes/reservado.png\"); width: 30px; height: 31px;'/>");
+                    echo( "<input type='button' name='" . $cont . "' style='background-image: url(\"./imagenes/ocupado.png\"); width: 30px; height: 31px;'/>");
                     echo("</form>");
                 };
                 $cont++;
@@ -284,20 +279,6 @@ class PdoConexion {
             echo ("Conexion Error" . $ex->getMessage());
         }
     }
-    
-        function getPeli($sal) {// devuelve premios acumulados del usuario..
-        try {
-            $sql = "SELECT pelicula FROM `salas` WHERE `id` = :nom";
-            $this->resultado = $this->cnx->prepare($sql) or die($sql);
-            $this->resultado->execute(array(':nom' => $sal)); // ejecutamos la consulta
-            $row = $this->resultado->fetch(PDO::FETCH_ASSOC); // metemos en row solo los resultados asociativos (nombre= manuel)
-            foreach ($row as $key => $value) {// recorremos el array resultante
-                return $value; // imprimimos
-            }
-        } catch (PDOException $ex) {
-            echo ("Conexion Error" . $ex->getMessage());
-        }
-    }
 
     function getpalomitas($nombre) {// devuelve palomitas de regalo del usuario..
         try {
@@ -330,6 +311,20 @@ class PdoConexion {
     function getpremios($nombre) {// devuelve premios acumulados del usuario..
         try {
             $sql = "SELECT premios FROM `usuarios` WHERE `usuario` = :nom";
+            $this->resultado = $this->cnx->prepare($sql) or die($sql);
+            $this->resultado->execute(array(':nom' => $nombre)); // ejecutamos la consulta
+            $row = $this->resultado->fetch(PDO::FETCH_ASSOC); // metemos en row solo los resultados asociativos (nombre= manuel)
+            foreach ($row as $key => $value) {// recorremos el array resultante
+                return $value; // imprimimos
+            }
+        } catch (PDOException $ex) {
+            echo ("Conexion Error" . $ex->getMessage());
+        }
+    }
+    
+      function getPeli($nombre) {// devuelve premios acumulados del usuario..
+        try {
+            $sql = "SELECT pelicula FROM `salas` WHERE `id` = :nom";
             $this->resultado = $this->cnx->prepare($sql) or die($sql);
             $this->resultado->execute(array(':nom' => $nombre)); // ejecutamos la consulta
             $row = $this->resultado->fetch(PDO::FETCH_ASSOC); // metemos en row solo los resultados asociativos (nombre= manuel)

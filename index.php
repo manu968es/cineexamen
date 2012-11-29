@@ -53,7 +53,8 @@ if (isset($_SESSION['nombre'])) {
                         $pru->setPremios($_SESSION['nombre'], "+", 2);
                         $pru->setanoPremio($_SESSION['nombre'], $yc);
                     }
-                    $_SESSION['tiempo']=date("Hi");
+                    $_SESSION['tiempo']=date("Hi");// tomamos la hora actual....
+                    echo("<script> alert('La hora inicial es ".$_SESSION['tiempo']."');</script>");
                     echo ("<script>
                             window.location='compra.php';
                             </script>");
